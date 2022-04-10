@@ -62,4 +62,12 @@ public class CommonPage {
         Select select = new Select(dropdownElement);
         select.selectByVisibleText(text);
     }
+
+    /**
+     * CheckBox
+     */
+    public void checkOnCheckbox(By locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+        driver.findElement(locator).click();
+    }
 }
