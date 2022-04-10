@@ -42,19 +42,22 @@ public class CommonPage {
     /**
      * Dropdown Functions
      */
-    public void selectDropdownByIndex(WebElement dropdownElement, int index) {
+    public void selectDropdownByIndex(By locator, int index) {
+        WebElement dropdownElement = driver.findElement(locator);
         wait.until(ExpectedConditions.visibilityOf(dropdownElement));
         Select select = new Select(dropdownElement);
         select.selectByIndex(index);
     }
 
-    public void selectDropDownByValue(WebElement dropdownElement, String value) {
+    public void selectDropDownByValue(By locator, String value) {
+        WebElement dropdownElement = driver.findElement(locator);
         wait.until(ExpectedConditions.visibilityOf(dropdownElement));
         Select select = new Select(dropdownElement);
         select.selectByValue(value);
     }
 
-    public void selectDropDownByText(WebElement dropdownElement, String text) {
+    public void selectDropDownByText(By locator, String text) {
+        WebElement dropdownElement = driver.findElement(locator);
         wait.until(ExpectedConditions.visibilityOf(dropdownElement));
         Select select = new Select(dropdownElement);
         select.selectByVisibleText(text);
