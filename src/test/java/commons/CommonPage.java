@@ -36,7 +36,7 @@ public class CommonPage {
     }
 
     public String getURL() {
-        return driver.getCurrentUrl().toString();
+        return driver.getCurrentUrl();
     }
 
     /**
