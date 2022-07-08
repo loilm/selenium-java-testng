@@ -20,6 +20,8 @@ public class CommonTest {
     private ATUTestRecorder recorder;
     private DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss");
     private Date date = new Date();
+    private String screenShotPath ="./src/test/resources/screenshots/";
+    private String videoPath = "./src/test/resources/videos/";
 
     //    Setting browser and run testcase with .xml file
     @Parameters("browser")
@@ -37,19 +39,19 @@ public class CommonTest {
     public void captureScreen(ITestResult testResult) throws IOException {
         if (!testResult.isSuccess()) {
             TakesScreenshot takesScreenshot = (TakesScreenshot) Browser.getDriver();
-            File filePath = new File("./screenshot/");
+            File filePath = new File(screenShotPath);
             if (!filePath.exists()) {
                 filePath.mkdirs();
             }
             File srcFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
-            File destFile = new File(filePath + testResult.getName() + "_" + dateFormat.format(date) + ".png");
+            File destFile = new File(screenShotPath + testResult.getName() + "_" + dateFormat.format(date) + ".png");
             FileUtils.copyFile(srcFile, destFile);
         }
     }
 
 //    ATUTestRecorder library
     public void startRecordVideo(String videoName) throws Exception {
-        File filePath = new File("./videos/");
+        File filePath = new File(videoPath);
         if (!filePath.exists()) {
             filePath.mkdirs();
         }
