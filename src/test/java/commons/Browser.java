@@ -10,19 +10,23 @@ public class Browser {
     private static WebDriver driver;
 
     public static WebDriver browserSetup(String browserName) {
-        if (browserName.trim().equalsIgnoreCase("chrome")) {
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-            driver.manage().window().maximize();
-        } else if (browserName.trim().equalsIgnoreCase("firefox")) {
-            WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
-            driver.manage().window().maximize();
-        } else if (browserName.trim().equalsIgnoreCase("edge")) {
-            WebDriverManager.edgedriver().setup();
-            driver = new EdgeDriver();
-            driver.manage().window().maximize();
+        switch (browserName.toLowerCase().trim()) {
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                break;
+            case "edge":
+                WebDriverManager.edgedriver().setup();
+                driver = new EdgeDriver();
+                break;
+            default:
+                System.out.println("Browser '" + browserName + "' not supported.");
         }
+        driver.manage().window().maximize();
         return driver;
     }
 
